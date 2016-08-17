@@ -1,3 +1,6 @@
+# Version 3.0.0
+Release date: unreleased
+
 #2.10.1
 Release date: 2016-10-08
 
