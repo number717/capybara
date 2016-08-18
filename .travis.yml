@@ -11,6 +11,7 @@ gemfile:
 matrix:
   include:
     - gemfile: Gemfile
+      rvm: 2.3
       env: WINDOW_TEST=true
     - gemfile: gemfiles/Gemfile.rspec-34
       rvm: 2.3.1
