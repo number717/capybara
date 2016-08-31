@@ -42,10 +42,6 @@ module Capybara
       def query
         @query ||= Capybara::Queries::SelectorQuery.new(*@args, &@filter_block)
       end
-
-      # RSpec 2 compatibility:
-      alias_method :failure_message_for_should, :failure_message
-      alias_method :failure_message_for_should_not, :failure_message_when_negated
     end
 
     class HaveText < Matcher
@@ -84,10 +80,6 @@ module Capybara
         content = Capybara::Helpers.normalize_whitespace(content) unless content.is_a? Regexp
         content.inspect
       end
-
-      # RSpec 2 compatibility:
-      alias_method :failure_message_for_should, :failure_message
-      alias_method :failure_message_for_should_not, :failure_message_when_negated
     end
 
     class HaveTitle < Matcher
@@ -119,10 +111,6 @@ module Capybara
       def description
         "have title #{title.inspect}"
       end
-
-      # RSpec 2 compatibility:
-      alias_method :failure_message_for_should, :failure_message
-      alias_method :failure_message_for_should_not, :failure_message_when_negated
     end
 
     class HaveCurrentPath < Matcher
@@ -154,10 +142,6 @@ module Capybara
       def description
         "have current path #{current_path.inspect}"
       end
-
-      # RSpec 2 compatibility:
-      alias_method :failure_message_for_should, :failure_message
-      alias_method :failure_message_for_should_not, :failure_message_when_negated
     end
 
     class BecomeClosed
@@ -182,10 +166,6 @@ module Capybara
       def failure_message_when_negated
         "expected #{@window.inspect} not to become closed after #{@wait_time} seconds"
       end
-
-      # RSpec 2 compatibility:
-      alias_method :failure_message_for_should, :failure_message
-      alias_method :failure_message_for_should_not, :failure_message_when_negated
     end
 
     class MatchSelector < Matcher
@@ -216,10 +196,6 @@ module Capybara
       def query
         @query ||= Capybara::Queries::MatchQuery.new(*@args)
       end
-
-      # RSpec 2 compatibility:
-      alias_method :failure_message_for_should, :failure_message
-      alias_method :failure_message_for_should_not, :failure_message_when_negated
     end
 
     def have_selector(*args, &optional_filter_block)
