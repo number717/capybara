@@ -91,4 +91,4 @@ before_script:
   - "awesome &"
 script: "bundle exec rake travis"
 install:
-  - bundle install --versbose --retry=3
+  - bundle install --verbose --retry=3
