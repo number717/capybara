@@ -213,7 +213,7 @@ module Capybara
       end
 
       ##
-      #
+      # @!method has_link?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has a link with the given
       # text or id.
       #
@@ -222,52 +222,36 @@ module Capybara
       # @option options [String, Regexp] :href    The value the href attribute must be
       # @return [Boolean]                 Whether it exists
       #
-      def has_link?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:link, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_no_link?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has no link with the given
       # text or id.
       #
       # @param (see Capybara::Node::Finders#has_link?)
       # @return [Boolean]            Whether it doesn't exist
       #
-      def has_no_link?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:link, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_button?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has a button with the given
       # text, value or id.
       #
       # @param [String] locator      The text, value or id of a button to check for
       # @return [Boolean]            Whether it exists
       #
-      def has_button?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:button, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_no_button?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has no button with the given
       # text, value or id.
       #
       # @param [String] locator      The text, value or id of a button to check for
       # @return [Boolean]            Whether it doesn't exist
       #
-      def has_no_button?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:button, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_field?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has a form field with the given
       # label, name or id.
       #
@@ -288,13 +272,9 @@ module Capybara
       # @option options [String] :type           The type attribute of the field
       # @return [Boolean]                        Whether it exists
       #
-      def has_field?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:field, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_no_field?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has no form field with the given
       # label, name or id. See {Capybara::Node::Matchers#has_field?}.
       #
@@ -303,69 +283,9 @@ module Capybara
       # @option options [String] :type           The type attribute of the field
       # @return [Boolean]                        Whether it doesn't exist
       #
-      def has_no_field?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:field, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
-      # Checks if the page or current node has a radio button or
-      # checkbox with the given label, value or id, that is currently
-      # checked.
-      #
-      # @param [String] locator           The label, name or id of a checked field
-      # @return [Boolean]                 Whether it exists
-      #
-      def has_checked_field?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:field, locator, options.merge(:checked => true), &optional_filter_block)
-      end
-
-      ##
-      #
-      # Checks if the page or current node has no radio button or
-      # checkbox with the given label, value or id, that is currently
-      # checked.
-      #
-      # @param [String] locator           The label, name or id of a checked field
-      # @return [Boolean]                 Whether it doesn't exist
-      #
-      def has_no_checked_field?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:field, locator, options.merge(:checked => true))
-      end
-
-      ##
-      #
-      # Checks if the page or current node has a radio button or
-      # checkbox with the given label, value or id, that is currently
-      # unchecked.
-      #
-      # @param [String] locator           The label, name or id of an unchecked field
-      # @return [Boolean]                 Whether it exists
-      #
-      def has_unchecked_field?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:field, locator, options.merge(:unchecked => true), &optional_filter_block)
-      end
-
-      ##
-      #
-      # Checks if the page or current node has no radio button or
-      # checkbox with the given label, value or id, that is currently
-      # unchecked.
-      #
-      # @param [String] locator           The label, name or id of an unchecked field
-      # @return [Boolean]                 Whether it doesn't exist
-      #
-      def has_no_unchecked_field?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:field, locator, options.merge(:unchecked => true), &optional_filter_block)
-      end
-
-      ##
-      #
+      # @!method has_select?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has a select field with the
       # given label, name or id.
       #
@@ -392,26 +312,18 @@ module Capybara
       # @option options [String, Array] :selected    Options which should be selected
       # @return [Boolean]                            Whether it exists
       #
-      def has_select?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:select, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_no_select?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has no select field with the
       # given label, name or id. See {Capybara::Node::Matchers#has_select?}.
       #
       # @param (see Capybara::Node::Matchers#has_select?)
       # @return [Boolean]     Whether it doesn't exist
       #
-      def has_no_select?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:select, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_table?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has a table with the given id
       # or caption:
       #
@@ -420,22 +332,82 @@ module Capybara
       # @param [String] locator                        The id or caption of a table
       # @return [Boolean]                              Whether it exist
       #
-      def has_table?(locator=nil, options={}, &optional_filter_block)
-        locator, options = nil, locator if locator.is_a? Hash
-        has_selector?(:table, locator, options, &optional_filter_block)
-      end
 
       ##
-      #
+      # @!method has_no_table?(locator=nil, options={}, &optional_filter_block)
       # Checks if the page or current node has no table with the given id
       # or caption. See {Capybara::Node::Matchers#has_table?}.
       #
       # @param (see Capybara::Node::Matchers#has_table?)
       # @return [Boolean]       Whether it doesn't exist
       #
-      def has_no_table?(locator=nil, options={}, &optional_filter_block)
+
+      %w(link button field select table).each do |selector|
+        define_method "has_#{selector}?" do |locator=nil, options={}, &optional_filter_block|
+          locator, options = nil, locator if locator.is_a? Hash
+          has_selector?(selector.to_sym, locator, options, &optional_filter_block)
+        end
+
+        define_method "has_no_#{selector}?" do |locator=nil, options={}, &optional_filter_block|
+          locator, options = nil, locator if locator.is_a? Hash
+          has_no_selector?(selector.to_sym, locator, options, &optional_filter_block)
+        end
+      end
+
+      ##
+      #
+      # Checks if the page or current node has a radio button or
+      # checkbox with the given label, value or id, that is currently
+      # checked.
+      #
+      # @param [String] locator           The label, name or id of a checked field
+      # @return [Boolean]                 Whether it exists
+      #
+      def has_checked_field?(locator=nil, options={}, &optional_filter_block)
         locator, options = nil, locator if locator.is_a? Hash
-        has_no_selector?(:table, locator, options, &optional_filter_block)
+        has_selector?(:field, locator, options.merge(checked: true), &optional_filter_block)
+      end
+
+      ##
+      #
+      # Checks if the page or current node has no radio button or
+      # checkbox with the given label, value or id, that is currently
+      # checked.
+      #
+      # @param [String] locator           The label, name or id of a checked field
+      # @return [Boolean]                 Whether it doesn't exist
+      #
+      def has_no_checked_field?(locator=nil, options={}, &optional_filter_block)
+        locator, options = nil, locator if locator.is_a? Hash
+        has_no_selector?(:field, locator, options.merge(checked: true))
+      end
+
+      ##
+      #
+      # Checks if the page or current node has a radio button or
+      # checkbox with the given label, value or id, that is currently
+      # unchecked.
+      #
+      # @param [String] locator           The label, name or id of an unchecked field
+      # @return [Boolean]                 Whether it exists
+      #
+      def has_unchecked_field?(locator=nil, options={}, &optional_filter_block)
+        locator, options = nil, locator if locator.is_a? Hash
+        has_selector?(:field, locator, options.merge(unchecked: true), &optional_filter_block)
+      end
+
+      ##
+      #
+      # Checks if the page or current node has no radio button or
+      # checkbox with the given label, value or id, that is currently
+      # unchecked.
+      #
+      # @param [String] locator           The label, name or id of an unchecked field
+      # @return [Boolean]                 Whether it doesn't exist
+      #
+      def has_no_unchecked_field?(locator=nil, options={}, &optional_filter_block)
+        locator, options = nil, locator if locator.is_a? Hash
+        has_no_selector?(:field, locator, options.merge(unchecked: true), &optional_filter_block)
       end
 
       ##

@@ -263,39 +263,28 @@ module Capybara
       HaveCurrentPath.new(path, options)
     end
 
-    def have_link(locator=nil, options={}, &optional_filter_block)
-      locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:link, locator, options, &optional_filter_block)
-    end
 
-    def have_button(locator=nil, options={}, &optional_filter_block)
-      locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:button, locator, options, &optional_filter_block)
-    end
+    #@!method have_link(locator=nil, options={}, &optional_filter_block)
+    #@!method have_button(locator=nil, options={}, &optional_filter_block)
+    #@!method have_field(locator=nil, options={}, &optional_filter_block)
+    #@!method have_select(locator=nil, options={}, &optional_filter_block)
+    #@!method have_table(locator=nil, options={}, &optional_filter_block)
 
-    def have_field(locator=nil, options={}, &optional_filter_block)
-      locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:field, locator, options, &optional_filter_block)
+    %w(link button field select table).each do |selector|
+      define_method "have_#{selector}" do |locator=nil, options={}, &optional_filter_block|
+        locator, options = nil, locator if locator.is_a? Hash
+        HaveSelector.new(selector.to_sym, locator, options, &optional_filter_block)
+      end
     end
 
     def have_checked_field(locator=nil, options={}, &optional_filter_block)
       locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:field, locator, options.merge(:checked => true), &optional_filter_block)
+      HaveSelector.new(:field, locator, options.merge(checked: true), &optional_filter_block)
     end
 
     def have_unchecked_field(locator=nil, options={}, &optional_filter_block)
       locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:field, locator, options.merge(:unchecked => true), &optional_filter_block)
-    end
-
-    def have_select(locator=nil, options={}, &optional_filter_block)
-      locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:select, locator, options, &optional_filter_block)
-    end
-
-    def have_table(locator=nil, options={}, &optional_filter_block)
-      locator, options = nil, locator if locator.is_a? Hash
-      HaveSelector.new(:table, locator, options, &optional_filter_block)
+      HaveSelector.new(:field, locator, options.merge(unchecked: true), &optional_filter_block)
     end
 
     ##
