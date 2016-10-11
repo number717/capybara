@@ -1,6 +1,19 @@
 # frozen_string_literal: true
 require "uri"
+require 'selenium-webdriver'
 
+module Selenium
+  module WebDriver
+    module Remote
+
+      class W3CBridge
+        def alert=(keys)
+          execute :sendAlertText, {}, {handler: 'prompt', value: keys}
+        end
+      end
+    end
+  end
+end
 class Capybara::Selenium::Driver < Capybara::Driver::Base
 
   DEFAULT_OPTIONS = {
