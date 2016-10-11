@@ -19,14 +19,14 @@ Capybara::SpecHelper.spec '#accept_prompt', requires: [:modals] do
   end
 
   it "should accept the prompt with a response" do
-    @session.accept_prompt with: 'the response' do
+    @session.accept_prompt with: ['the response'] do
       @session.click_link('Open prompt')
     end
     expect(@session).to have_xpath("//a[@id='open-prompt' and @response='the response']")
   end
 
   it "should accept the prompt if the message matches" do
-    @session.accept_prompt 'Prompt opened', with: 'matched' do
+    @session.accept_prompt 'Prompt opened', with: ['matched'] do
       @session.click_link('Open prompt')
     end
     expect(@session).to have_xpath("//a[@id='open-prompt' and @response='matched']")
@@ -34,7 +34,7 @@ Capybara::SpecHelper.spec '#accept_prompt', requires: [:modals] do
 
   it "should not accept the prompt if the message doesn't match" do
     expect do
-      @session.accept_prompt 'Incorrect Text', with: 'not matched' do
+      @session.accept_prompt 'Incorrect Text', with: ['not matched'] do
         @session.click_link('Open prompt')
       end
     end.to raise_error(Capybara::ModalNotFound)
@@ -42,7 +42,7 @@ Capybara::SpecHelper.spec '#accept_prompt', requires: [:modals] do
 
 
   it "should return the message presented" do
-    message = @session.accept_prompt with: 'the response' do
+    message = @session.accept_prompt with: ['the response'] do
       @session.click_link('Open prompt')
     end
     expect(message).to eq('Prompt opened')
