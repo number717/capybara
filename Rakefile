@@ -43,8 +43,6 @@ end
 task :travis do |t|
   if ENV['CAPYBARA_CHROME']
     Rake::Task[:spec_chrome].invoke
-  elsif ENV['CAPYBARA_LEGACY_FIREFOX']
-    Rake::Task[:spec_legacy_firefox].invoke
   else
     Rake::Task[:spec].invoke
     Rake::Task[:cucumber].invoke

@@ -17,16 +17,16 @@ matrix:
       rvm: 2.3.1
       env:
         - WINDOW_TEST=true
-        - CAPYBARA_LEGACY_FIREFOX=true
       addons:
         firefox: 47.0.1
         apt:
           packages:
             - awesome
-      script: "bundle exec rake spec_legacy_firefox"
+      script: "bundle exec rake spec_chrome"
     - gemfile: gemfiles/Gemfile.rspec-34
       rvm: 2.3.1
       env: CAPYBARA_CHROME=true
+      script: "bundle exec rake spec_chrome"
       addons:
         apt:
           sources:
@@ -58,6 +58,7 @@ matrix:
     - gemfile: gemfiles/Gemfile.beta-marionette
       env: CAPYBARA_CHROME=true
       rvm: 2.3.1
+      script: "bundle exec rake spec_legacy_firefox"
       addons:
         apt:
           sources:
