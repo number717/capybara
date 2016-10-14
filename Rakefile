@@ -28,7 +28,7 @@ RSpec::Core::RakeTask.new(:spec_legacy_firefox) do |t|
   t.rspec_opts = %w[--color]
   # jruby buffers the progress formatter so travis doesn't see output often enough
   t.rspec_opts << '--format documentation' if RUBY_PLATFORM=='java'
-  t.pattern = './spec/*{_spec_chrome.rb}'
+  t.pattern = './spec/*{_spec_legacy_firefox.rb}'
 end
 
 YARD::Rake::YardocTask.new do |t|
