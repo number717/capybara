@@ -18,6 +18,12 @@ matrix:
       env:
         - WINDOW_TEST=true
         - CAPYBARA_LEGACY_FIREFOX=true
+      addons:
+        firefox: 47.0.1
+        apt:
+          packages:
+            - awesome
+      script: "bundle exec rake spec_legacy_firefox"
     - gemfile: gemfiles/Gemfile.rspec-34
       rvm: 2.3.1
       env: CAPYBARA_CHROME=true
@@ -32,6 +38,11 @@ matrix:
       rvm: 1.9.3
     - gemfile: gemfiles/Gemfile.base-versions
       rvm: 1.9.3
+      addons:
+        firefox: 47.0.1
+        apt:
+          packages:
+            - awesome
     - gemfile: gemfiles/Gemfile.base-versions
       rvm: 2.3.1
     - gemfile: gemfiles/Gemfile.beta-versions
@@ -65,7 +76,7 @@ env:
     - JAVA_OPTS=-Djava.security.egd=file:/dev/urandom
 
 addons:
-  firefox: 47.0.1
+  firefox: latest
   apt:
     packages:
       - awesome
