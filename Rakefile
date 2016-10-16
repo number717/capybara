@@ -8,6 +8,7 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.rspec_opts = %w[--color]
   # When we drop RSpec 2.x support we can rename spec_chrome.rb and implement this properly
   # t.exclude_pattern = './spec/*{_chrome_spec.rb}'
+  t.pattern = './spec{,/*/**}/*{_spec.rb,_spec_firefox.rb}'
 end
 
 RSpec::Core::RakeTask.new(:all) do |t|
