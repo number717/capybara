@@ -30,7 +30,7 @@ matrix:
         firefox: latest
         apt:
           packages:
-            -awesome
+            - awesome
     - gemfile: Gemfile
       rvm: 2.3.1
       env:
